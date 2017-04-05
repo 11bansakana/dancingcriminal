@@ -117,6 +117,16 @@ void Game::Begin()
 					cout << "Alibi, nothing happened." << endl;
 					break;
 				case CARDTYPE_INFOTRADE:
+					Card *gifts[10];
+					for(int i = 0; i < players.size(); i++)
+					{
+						gifts[i] = players[i]->Get(0);
+					}
+					for(int i = 0; i < players.size(); i++)
+					{
+						int getfrom = i == players.size() - 1 ? 0 : i+1;
+						players[i]->Draw(gifts[getfrom]);
+					}
 					break;
 				case CARDTYPE_DEAL:
 					break;
